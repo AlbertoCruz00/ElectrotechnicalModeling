@@ -170,7 +170,8 @@ end
 % xi(ind)+ xi(ind:-1:1
 x_final = [xi(1:ind)',xi_rev'];
 
-z_max = max(z_final);
+[z_max,z_max_index] = max(z_final);
+
 z_line = z_max*ones(1,length(x_final));
 
 hfig = figure;
@@ -189,12 +190,9 @@ hold on, grid on
 plot(x_n*1e-3,z_n*1e-3,'-','LineWidth',1.5,'DisplayName','Simple model')
 plot(x_final*1e-3,z_final*1e-3,'-','LineWidth',1.5,'DisplayName','Realistic model');
 
-plot(x_n*1e-3,max(z_n)*ones(1,length(x_n))*1e-3,'black','LineWidth',1.5,'DisplayName','Maximum height 1')
-%plot(x_final*1e-3,max(z_final)*ones(1,length(x_final))*1e-3,'black','LineWidth',1.5,'DisplayName','Maximum height 2')
 
-
-xlabel('Horizontal distance (Km)'); xlim([0 max(abs(x_final))*1e-3]);
-ylabel('Height (km)'); ylim([0 250])
+xlabel('Horizontal distance (Km)')
+ylabel('Height (km)')
 legend;legend('boxoff')
 title('Comparison of models')
 Figures
