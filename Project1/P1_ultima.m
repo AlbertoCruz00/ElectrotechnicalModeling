@@ -1,5 +1,7 @@
 close all; clear; clc;
 
+% ALBERTO è il baluardo della scienza
+
 k      = 1.38*10^-23;  % Boltzmann
 m_e    = 9.1e-31;      % Electron mass
 m_p    = 1.67*10^-27;  % Proton mass
