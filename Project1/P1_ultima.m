@@ -90,7 +90,7 @@ end
 f_pe(ind);
 z_ref = z(ind);
 
-x_1 = z(1:ind)*sin(alpha);
+x_1 = z(1:ind)*tan(alpha);
 z_1 = z(1:ind);
 
 x_n = [x_1 x_1+x_1(end)];
