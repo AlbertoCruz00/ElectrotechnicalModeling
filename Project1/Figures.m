@@ -1,7 +1,7 @@
 
 picturewidth = 20; % set this parameter and keep it forever
 hw_ratio = 0.65; % feel free to play with this ratio
-set(findall(hfig,'-property','FontSize'),'FontSize',17) % adjust fontsize to your document
+set(findall(hfig,'-property','FontSize'),'FontSize',15) % adjust fontsize to your document
 set(findall(hfig,'-property','Box'),'Box','off') % optional
 set(findall(hfig,'-property','Interpreter'),'Interpreter','latex') 
 set(findall(hfig,'-property','TickLabelInterpreter'),'TickLabelInterpreter','latex')

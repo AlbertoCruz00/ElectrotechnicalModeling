@@ -102,8 +102,8 @@ hold on
 grid on
 title('Simplified model for the radio wave propagation')
 plot(x_n*1e-3,z_n*1e-3,'-','LineWidth',1.5)
-yline(z_ref*1e-3,'-','Zref')
-ylabel('Height (km)')
+yline(z_ref*1e-3,'-','Reflection heigh','LineWidth',1.5)
+ylabel('Height (km)');ylim([0  210]);
 xlabel('Horizontal distance (km)')
 Figures
 
@@ -176,29 +176,30 @@ z_line = z_max*ones(1,length(x_final));
 hfig = figure;
 fname = 'Ex4_1';
 hold on, grid on
+
 plot(x_final*1e-3,z_final*1e-3,'-','LineWidth',1.5), 
-yline(zi(ind)*1e-3,'-','Zref')
+yline(zi(ind)*1e-3,'-','Reflection height','LineWidth',1.5)
+
 xlabel('Horizontal distance (Km)')
-ylabel('Height (km)')
+ylabel('Height (km)'); ylim([0 zi(ind)*1e-3+20]);
 title('More realistic model of the ray-tracing path')
 Figures
 
 hfig = figure;
 fname = 'Ex4_2';
 hold on, grid on
+
 plot(x_n*1e-3,z_n*1e-3,'-','LineWidth',1.5,'DisplayName','Simple model')
+yline(max(z_n)*1e-3,'LineWidth',1.5,'DisplayName','Maximum height simple model')
+
 plot(x_final*1e-3,z_final*1e-3,'-','LineWidth',1.5,'DisplayName','Realistic model');
-
-plot(x_n*1e-3,max(z_n)*ones(1,length(x_n))*1e-3,'black','LineWidth',1.5,'DisplayName','Maximum height 1')
-%plot(x_final*1e-3,max(z_final)*ones(1,length(x_final))*1e-3,'black','LineWidth',1.5,'DisplayName','Maximum height 2')
-
+yline(max(z_final)*1e-3,'LineWidth',1.5,'DisplayName','Maximum height discretized model')
 
 xlabel('Horizontal distance (Km)'); xlim([0 max(abs(x_final))*1e-3]);
-ylabel('Height (km)'); ylim([0 250])
+ylabel('Height (km)'); ylim([0 max([max(z_n),max(z_final)])*1e-3+75])
 legend;legend('boxoff')
 title('Comparison of models')
 Figures
-
 
 
 %% Step 5 - evaluating the effects of changing the atmospheric temperature
@@ -213,15 +214,10 @@ ne = sqrt( ai/ar .* n0 .* exp(- zi/H) .* I0 .* exp(-H .* aa .* n0 .* exp(-zi/H) 
 f_pe = 1/(2*pi) * sqrt( (ne * q^2) /( ep_0 * m_e)  );
 
 xi = zeros(length(zi),1);
-
 ni = sqrt(1 - f_pe.^2./f^2 );
-
 alpha_i = zeros(length(zi),1);
-
 flag_1 = 0;
-
 p = 1;
-
 while flag_1 == 0
     if p == 1
         alpha_i(p) = alpha;
@@ -242,7 +238,6 @@ z_5 = [zi(1:ind), zi(ind:-1:1)];
 
 xi_rev = zeros(ind, 1);
 xi_end = xi(ind);
-
 for i=1:1:ind
     if i == 1
         xi_rev(i) = xi_end;
@@ -250,14 +245,13 @@ for i=1:1:ind
         xi_rev(i) = xi_rev(i-1)+(xi(ind-i+2)-xi(ind-i+1));
     end
 end
-
 x_5 = [xi(1:ind)',xi_rev'];
 
 
 hfig = figure;
 fname = 'Ex5_1';
 hold on, grid on
-%plot(x_n*1e-3,z_n*1e-3,'-','LineWidth',1.5)
+plot(x_n*1e-3,z_n*1e-3,'-','LineWidth',1.5)
 plot(x_final*1e-3,z_final*1e-3,'-','LineWidth',1.5,'DisplayName',['T = ',num2str(T),' K'])
 plot(x_5*1e-3,z_5*1e-3,'-','LineWidth',1.5,'DisplayName',['T = ',num2str(T_1),' K']);
 legend;legend('boxoff')
