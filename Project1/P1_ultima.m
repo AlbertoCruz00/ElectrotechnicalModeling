@@ -93,7 +93,7 @@ while p<length(f_pe)
 end
 
 f_pe(ind);
-z_ref = z(ind);
+z_ref = z(ind)
 
 x_1 = z(1:ind)*tan(alpha);
 z_1 = z(1:ind);
@@ -116,7 +116,7 @@ Figures
 
 %% Step 4
 
-dz = 0.1;
+dz = 0.1; % z-discretization (Km)
 
 zi = (0:dz:250)*1e3; % Altitude vector (m)
 
@@ -209,7 +209,7 @@ Figures
 
 %% Step 5 - evaluating the effects of changing the atmospheric temperature
 
-dz = 0.001;
+dz = 0.1;
 
 zi = (0:dz:250)*1e3; % Altitude vector (m)
 
@@ -270,7 +270,7 @@ Figures
 
 I_6=I0*10;
 
-dz = 0.001;
+dz = 0.1;
 
 zi = (0:dz:250)*1e3; % Altitude vector (m)
 
@@ -337,3 +337,4 @@ Figures
 
 
 
+close all
