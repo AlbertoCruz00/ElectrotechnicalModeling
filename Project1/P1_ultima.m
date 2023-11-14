@@ -220,13 +220,15 @@ x_5 = [xi(1:ind)',xi_rev'];
 hfig = figure;
 fname = 'Ex5_1';
 hold on, grid on
-plot(x_n*1e-3,z_n*1e-3,'-','LineWidth',1.5,'DisplayName','Simple model')
-plot(x_final*1e-3,z_final*1e-3,'-','LineWidth',1.5,'DisplayName','$T_{1}$')
-plot(x_5*1e-3,z_5*1e-3,'-','LineWidth',1.5,'DisplayName','$T_{2}$');
+% plot(x_n*1e-3,z_n*1e-3,'-','LineWidth',1.5,'DisplayName','Simple model')
+plot(x_final*1e-3,z_final*1e-3,'-','LineWidth',1.5,'DisplayName',['$T_{1}$ = ',num2str(T,format),' K'])
+yline(max(z_final)*1e-3,'--','LineWidth',1.5,'DisplayName','$Z_{ref}$ for $T_{1}$')
+plot(x_5*1e-3,z_5*1e-3,'-','LineWidth',1.5,'DisplayName',['$T_{2}$ = ',num2str(T_1,format),' K']);
+yline(max(z_5)*1e-3,'--','LineWidth',1.5,'DisplayName','$Z_{ref}$ for $T_{2}$')
 legend;legend('boxoff')
 xlabel('Horizontal distance (Km)')
-ylabel('Height (km)')
-title('Comparison of models')
+ylabel('Height (km)'); ylim([0 230]);
+title('Comparison of temperatures')
 Figures
 
 %% Step 6
@@ -275,7 +277,7 @@ hfig = figure;
 fname = 'Ex6_1';
 hold on, grid on
 plot(x_final*1e-3,z_final*1e-3,'-','LineWidth',1.5,'DisplayName','Original case')
-yline(max(z_final)*1e-3,'--','LineWidth',1.5,'DisplayName','$Z_ref$')
+yline(max(z_final)*1e-3,'--','LineWidth',1.5,'DisplayName','$Z_{ref} \; original$')
 plot(x_6*1e-3,z_6*1e-3,'-','LineWidth',1.5,'DisplayName','Larger intensity');
 yline(max(z_6)*1e-3,'--','LineWidth',1.5,'DisplayName','$Z_{ref}$')
 legend;legend('boxoff','')

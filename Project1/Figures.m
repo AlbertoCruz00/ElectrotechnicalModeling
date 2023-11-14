@@ -10,5 +10,5 @@ pos = get(hfig,'Position');
 set(hfig,'PaperPositionMode','Auto','PaperUnits','centimeters','PaperSize',[pos(3), pos(4)])
 
 print(hfig,fname,'-dpdf','-painters','-fillpage')
-
+close
 %print(hfig,fname,'-dpng','-painters')
